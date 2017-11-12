@@ -38,20 +38,23 @@
         "persistent": false
     },
 
-    // This declaration 
+    // This declaration specifies which websites will activateg the extension
+    // As well a which ecropt will run when it detects the website 
     "content_scripts": [
         {
             "matches": [
                 "https://twitter.com/*"
             ],
             "js": [
-                "js/content.js",
-                "js/jquery-3.2.1.min.js"
+                "js/jquery-3.2.1.min.js",
+                "js/content.js"                
             ],
+
+            // This is the css that wil be injected to the webpage
             "css": [
                 "css/content.css"
-            ],
-            "run_at": "document_end"
+            ]
+            // "run_at": "document_end"
         }
     ]
 }

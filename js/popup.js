@@ -61,5 +61,13 @@ $(function () {
         });
         $("#total").text(newTotal);
         $("#amount").val(' ');
+
+
+        // This function send a message to be listen back at the content.js
+        chrome.tabs.query({active: true, currentWindow:true}, function(tabs){
+            var color = "stream-item-tweet-929752112166252545";
+            chrome.tabs.sendMessage(tabs.id[0],{todo: "removeTweet", offensiveId: color});
+
+        });
     });
 });
