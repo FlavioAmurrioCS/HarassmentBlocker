@@ -6,13 +6,14 @@ var contextMenuItem = {
 };
 chrome.contextMenus.create(contextMenuItem);
 
-
+// This is what happens when selecting text and clicking the dialog
 chrome.contextMenus.onClicked.addListener(function (clickData) {
     if (clickData.menuItemId == "hackital" && clickData.selectionText) {
         // Send text to server here
     }
 });
 
+// Do not remember what this function does
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     if (request.todo == "showPageAction") {
         chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
