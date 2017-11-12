@@ -4,11 +4,11 @@
     "manifest_version": 2,
     "description": "This is an extension that helps to filter out offensive comments.",
     "icons": {
-        "128": "icon128.png",
-        "48": "icon48.png",
-        "16": "icon16.png"
+        "128": "res/icon128.png",
+        "48": "res/icon48.png",
+        "16": "res/icon16.png"
     },
-    "options_page": "options.html",
+    "options_page": "html/options.html",
     "permissions": [
         "storage",
         "notifications",
@@ -21,13 +21,13 @@
     //     "default_popup": "popup.html"
     // },
     "page_action": {
-        "default_icon": "icon16.png",
-        "default_popup": "popup.html",
+        "default_icon": "res/icon16.png",
+        "default_popup": "html/popup.html",
         "default_title": "Block"
     },
     "background": {
         "scripts": [
-            "eventPage.js"
+            "js/eventPage.js"
         ],
         "persistent": false
     },
@@ -37,11 +37,11 @@
                 "https://twitter.com/*"
             ],
             "js": [
-                "content.js",
-                "jquery-3.2.1.min.js"
+                "js/content.js",
+                "js/jquery-3.2.1.min.js"
             ],
             "css": [
-                "content.css"
+                "css/content.css"
             ]
         }
     ]
