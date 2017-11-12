@@ -12,11 +12,6 @@ chrome.contextMenus.create(contextMenuItem);
 chrome.contextMenus.onClicked.addListener(function (clickData) {
     if (clickData.menuItemId == "hackital") {
 
-        var fid = clickData.frameId;
-        var pid = clickData.parentMenuItemId;
-
-        console.log(clickData);
-
         var color = "dummy value";
         chrome.tabs.query({active:true,currentWindow: true}, function(tabs){
             chrome.tabs.sendMessage(tabs[0].id, {todo: "changeColor", clickedColor: color });
