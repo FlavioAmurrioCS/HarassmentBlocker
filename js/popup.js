@@ -1,10 +1,6 @@
-<<<<<<< Updated upstream
-// This file interacts with the popup.html
-
-=======
 var URL = 'localhost:8080/WebService/';
 //var URL = 'http://hack.us-east-1.elasticbeanstalk.com/WebService/';
->>>>>>> Stashed changes
+
 // This function modifies the popup window when changin the input field
 // #name is the input field
 // #greet is the text field
@@ -28,8 +24,6 @@ $(function () {
     chrome.storage.sync.get('total', function (budger) {
         $("#total").text(budget.total);
     })
-<<<<<<< Updated upstream
-=======
 });
 
 
@@ -65,7 +59,6 @@ $( document ).ready(function() {
           }
      });
 });
->>>>>>> Stashed changes
 
 
     $('#btn').click(function () {
