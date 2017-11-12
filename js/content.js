@@ -22,59 +22,13 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             $(selected).hide();
         });
 
-        
-
-        // $('ol').on('click', 'li', function(e) { //Get li under ul and invoke on contextmenu
-        //             e.preventDefault(); //Prevent defaults
-        //             // alert(this.id); //alert the id
-
-        //             // ("#" +this.id).css('display','none');
-        //             $("#"+ this.id).hide();
-        //         });
+      
         return;
     }
     return;
 });
 
-<<<<<<< HEAD
 
-// This creates a listener will detetect messages like the one above 
-// chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-//     if (request.todo == "removeTweet") {
-
-//         console.log("Finally Here");
-//     }
-// });
-
-
-// chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-//     if (request.todo == "removeTweet") {
-//         // Get the value being passed witht the request
-//         var itemId = "#" + request.offensiveId;
-//         $(itemId).css('display', 'none');
-
-
-
-//         $(function() {
-//                 $('ol').on('click', 'li', function(e) { //Get li under ul and invoke on contextmenu
-//                     e.preventDefault(); //Prevent defaults
-//                     // alert(this.id); //alert the id
-
-//                     // ("#" +this.id).css('display','none');
-//                     $("#"+ this.id).hide();
-//                 });
-//             });
-//     }
-// });
-
-// $("document").ready(function () {
-//     $(".stream").click(function () {
-//         $(this).hide();
-//         // $(this).css('display', 'none');
-//         // $(this).remove();
-//     });
-// });
-=======
 $("document").ready(function () {
     $(".stream").click(function () {
         $(this).hide();
@@ -82,7 +36,7 @@ $("document").ready(function () {
         // $(this).remove();
     });
     
-         //getAllTweets();
+         getAllTweets();
      //getUserName();
     
     /**
@@ -90,7 +44,12 @@ $("document").ready(function () {
      */
     function getAllTweets() {
           var allTweets = $('[id^="stream-item-tweet-"]');
-          //console.log("All tweets = " + allTweets.length) ;
+          var TweetsIDs = [];
+          for(var el of allTweets){
+            var ids = el.id.replace(/.*-/g,"")
+            TweetsIDs.push(ids);
+            // console.log(el.innerText);
+          }
     }
     
     /**
@@ -102,22 +61,4 @@ $("document").ready(function () {
           return username.substring(1, username.length);
     }  
 });
->>>>>>> bd2fde7428bbcb17112d815ea1d288b355699e3c
 
-// var r= $('<input type="button" value="new button"/>');
-
-// $("li").append(r);
-
-// var element = document.querySelector('li.js-stream-item stream-item stream-item');
-// element.parentElement.removeChild(element);
-
-// contextmenu
-// $(function() {
-//     $('ol').on('contextmenu', 'li', function(e) { //Get li under ul and invoke on contextmenu
-//         e.preventDefault(); //Prevent defaults
-//         // alert(this.id); //alert the id
-
-//         // ("#" +this.id).css('display','none');
-//         $("#"+ this.id).hide();
-//     });
-// });
