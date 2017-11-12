@@ -27,14 +27,18 @@
     "page_action": {
         "default_icon": "res/icon16.png",
         "default_popup": "html/popup.html",
-        "default_title": "Block"
+        "default_title": "Harrasment Block"
     },
+
+    // This declaration sets which script will run when we right click
     "background": {
         "scripts": [
             "js/eventPage.js"
         ],
         "persistent": false
     },
+
+    // This declaration 
     "content_scripts": [
         {
             "matches": [

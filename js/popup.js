@@ -21,12 +21,17 @@ $(function () {
 
     // Prepopulate the total field every time the popup is opened
     chrome.storage.sync.get('total', function (budger) {
-        $("#total").text(budget.total);        
+        $("#total").text(budget.total);
     })
 
 
     $('#btn').click(function () {
-        chrome.storage.sync.get('total', function (budget) {
+        // This function now retrieves multiple items [] from the storage
+        chrome.storage.sync.get(['total', 'limit'], function (budget) {
+            // To retrieve items in from this function we now have to
+            // access it via the budget.field method
+
+
             var newTotal = 0;
             // if budget.total exist
             if (budget.total) {
@@ -40,9 +45,21 @@ $(function () {
             }
 
             // store information back to chrome storage
-            chrome.storage.sync.set({ 'total': newTotal });
-            $("#total").text(newTotal);
-            $("#amount").val(' ');
+            chrome.storage.sync.set({ 'total': newTotal }, function () {
+                if (true) {
+                    var notifOptions = {
+                        type: 'basic',
+                        iconUrl: 'icon48.png',
+                        title: "Action activated!",
+                        message: "A condition has been met and thus we must display this message"
+                    };
+                    // This functions cretates the notifcation for the above object   
+                    chrome.notifications.create("limitNotif", notifOptions);
+                }
+            });
+
         });
+        $("#total").text(newTotal);
+        $("#amount").val(' ');
     });
 });

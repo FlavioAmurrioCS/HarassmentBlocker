@@ -7,6 +7,8 @@ var contextMenuItem = {
 chrome.contextMenus.create(contextMenuItem);
 
 // This is what happens when selecting text and clicking the dialog
+// This declaration works for all of them and we differentialte based
+// on the clickData.menuItemId
 chrome.contextMenus.onClicked.addListener(function (clickData) {
     if(clickData.menuItemId == "hackital"){
         var id = clickData.frameId;
@@ -16,6 +18,24 @@ chrome.contextMenus.onClicked.addListener(function (clickData) {
         // Send text to server here
     }
 });
+
+// This adds a listener whenever an item on the chrome storage changes
+// changes is the object that holds the information(bundle)
+chrome.storage.onChanged.addListener(function(changes, storageName){
+
+    // Thisk function gets the total fromt he changes bundle and gets the new value
+    // The old values is stores in oldValue
+    chrome.browserAction.setBadgeText({'text': changes.total.newValue.toString()});
+
+});
+
+// This functions will gives us the list of tabs in an array "tabs"
+chrome.tabs.query({active:true, currentWindow: true}, function (tabs) {
+    // This function actives the extension
+    // Since there are not argument, this activates it for all websites
+    chrome.pageAction.show(tabs[0].id);    
+})
+
 
 // Do not remember what this function does
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
