@@ -1,4 +1,5 @@
-// This file interacts with the popup.html
+var URL = 'localhost:8080/WebService/';
+//var URL = 'http://hack.us-east-1.elasticbeanstalk.com/WebService/';
 
 // This function modifies the popup window when changin the input field
 // #name is the input field
@@ -23,6 +24,41 @@ $(function () {
     chrome.storage.sync.get('total', function (budger) {
         $("#total").text(budget.total);
     })
+});
+
+
+
+$( document ).ready(function() {
+   //document.addEventListener('submit', function() {
+   /*$( "#submit" ).click(function() {
+        var word = $('#badWordInput').val();
+          console.log("Saving bad word = " + word);
+          
+          var username = 'dogwalker20181';//$('div.DashUserDropdown').html();
+          var username2 = $('div.DashUserDropdown');
+          //var username2 = $('.username.u-dir');
+          //var username3 = $('.username').html();
+          //var username4 = $('.username > b').html();
+          console.log('\n\nusername = ' + username + '\n\n');
+          
+          var urlS = URL + 'addNewWord?username=' + username + '&word=' + word;
+          console.log(urlS);
+          $.get( urlS , function( data ) {
+            //$( ".result" ).html( data );
+            console.log('YAYAYA');
+            alert( "Load was performed." );
+          });
+     });*/
+     //getTweet();
+     $( "#submit" ).click(function() {
+          getTweet();
+          function getTweet() {
+               var tweets = $('#stream-item-tweet-879239622068506625');// js-original-tweet'
+               console.log('Tweet = ' + tweets);
+               console.log('# of tweets = ' + tweets.length);
+          }
+     });
+});
 
 
     $('#btn').click(function () {

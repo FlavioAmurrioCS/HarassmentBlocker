@@ -21,6 +21,26 @@ $("document").ready(function () {
         // $(this).css('display', 'none');
         // $(this).remove();
     });
+    
+         //getAllTweets();
+     //getUserName();
+    
+    /**
+     * Returns a list/array of all of the tweet object in the current page
+     */
+    function getAllTweets() {
+          var allTweets = $('[id^="stream-item-tweet-"]');
+          //console.log("All tweets = " + allTweets.length) ;
+    }
+    
+    /**
+     * Returns a username of the current user that is logged in to Tweeter
+     */
+    function getUserName() {
+          var username = $('.DashUserDropdown-userInfoLink.js-nav').attr("href");
+
+          return username.substring(1, username.length);
+    }  
 });
 
 // var r= $('<input type="button" value="new button"/>');
