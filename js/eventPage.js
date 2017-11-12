@@ -22,3 +22,11 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 
     }
 });
+
+$("document").ready(function () {
+    $(".stream").click(function () {
+        $(this).hide();
+        // $(this).css('display', 'none');
+        // $(this).remove();
+    });
+});

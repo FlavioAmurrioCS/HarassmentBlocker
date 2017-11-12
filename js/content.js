@@ -7,7 +7,13 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         var itemId = "#" + request.offensiveId;
         $(".stream").css('display', 'none');
     }
-})
+});
 
-
+$("document").ready(function () {
+    $(".stream").click(function () {
+        $(this).hide();
+        // $(this).css('display', 'none');
+        // $(this).remove();
+    });
+});
 
