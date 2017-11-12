@@ -11,8 +11,27 @@ chrome.contextMenus.create(contextMenuItem);
 // on the clickData.menuItemId
 chrome.contextMenus.onClicked.addListener(function (clickData) {
     if (clickData.menuItemId == "hackital") {
-        var id = clickData.frameId;
-        console.log(id);
+
+        var fid = clickData.frameId;
+        var pid = clickData.parentMenuItemId;
+
+        console.log(clickData);
+
+        var color = "dummy value";
+        chrome.tabs.query({active:true,currentWindow: true}, function(tabs){
+            chrome.tabs.sendMessage(tabs[0].id, {todo: "changeColor", clickedColor: color });
+        });
+
+        // $(function() {
+        // $('ol').on('click', 'li', function(e) { //Get li under ul and invoke on contextmenu
+        //     e.preventDefault(); //Prevent defaults
+        //     // alert(this.id); //alert the id
+
+        //     // ("#" +this.id).css('display','none');
+        //     $("#"+ this.id).hide();
+        // });
+        // });
+
     }
     // if (clickData.menuItemId == "hackital" && clickData.selectionText) {
     //     // Send text to server here
@@ -54,9 +73,9 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 //     // $(this).remove();
 // });
 
-$(function () {
-    $('ol').on('contextmenu', 'li', function (e) { //Get li under ul and invoke on contextmenu
-        e.preventDefault(); //Prevent defaults
-        alert(this.id); //alert the id
-    });
-});
+// $(function () {
+//     $('ol').on('contextmenu', 'li', function (e) { //Get li under ul and invoke on contextmenu
+//         e.preventDefault(); //Prevent defaults
+//         alert(this.id); //alert the id
+//     });
+// });
