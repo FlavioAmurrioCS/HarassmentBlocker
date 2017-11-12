@@ -2,12 +2,16 @@
 var contextMenuItem = {
     "id": "hackital",
     "title": "Add to Block List",
-    "contexts": ["selection"]
+    "contexts": ["page"]
 };
 chrome.contextMenus.create(contextMenuItem);
 
 // This is what happens when selecting text and clicking the dialog
 chrome.contextMenus.onClicked.addListener(function (clickData) {
+    if(clickData.menuItemId == "hackital"){
+        var id = clickData.frameId;
+        console.log(id);
+    }
     if (clickData.menuItemId == "hackital" && clickData.selectionText) {
         // Send text to server here
     }
@@ -23,10 +27,15 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     }
 });
 
-$("document").ready(function () {
     $(".stream").click(function () {
         $(this).hide();
         // $(this).css('display', 'none');
         // $(this).remove();
     });
-});
+
+    $(function() {
+        $('ol').on('contextmenu', 'li', function(e) { //Get li under ul and invoke on contextmenu
+            e.preventDefault(); //Prevent defaults
+            alert(this.id); //alert the id
+        });
+    });

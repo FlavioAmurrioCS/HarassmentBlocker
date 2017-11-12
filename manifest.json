@@ -8,7 +8,11 @@
         "48": "res/icon48.png",
         "16": "res/icon16.png"
     },
+
+    // This is for the the option view 
     "options_page": "html/options.html",
+    
+    // Permission allow to add accces to certain items
     "permissions": [
         "storage",
         "notifications",
@@ -42,7 +46,8 @@
             ],
             "css": [
                 "css/content.css"
-            ]
+            ],
+            "run_at": "document_end"
         }
     ]
 }
