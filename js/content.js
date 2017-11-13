@@ -7,36 +7,37 @@
 
 chrome.runtime.sendMessage({ todo: "showPageAction" });
 
+$(function () {
+
+    chrome.storage.sync.get({}, function (bundle) {
+
+        bundle.array
+        
+    })
+    
+})
+
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     if (request.todo == "changeColor") {
-        var addColor = '#' + request.clickedColor;
-        console.log(addColor);
 
+        var original;
         var selected;
 
-        $('li').click(function () {
-            // alert(this.id);
-            $("#" + this.id).hide();
-            selected = $("#" + this.id).prev();
+        $('li').mouseover(function () {
             $('li').unbind("mouseover");
+            // alert(this.id);
+            // $("#" + this.id).hide();
+
+            original = $("#" + this.id);
+            selected = $("#" + this.id).prev();
+            
             $(selected).hide();
         });
-
-        
-
-        // $('ol').on('click', 'li', function(e) { //Get li under ul and invoke on contextmenu
-        //             e.preventDefault(); //Prevent defaults
-        //             // alert(this.id); //alert the id
-
-        //             // ("#" +this.id).css('display','none');
-        //             $("#"+ this.id).hide();
-        //         });
         return;
     }
     return;
 });
 
-<<<<<<< HEAD
 
 // This creates a listener will detetect messages like the one above 
 // chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
@@ -74,35 +75,6 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 //         // $(this).remove();
 //     });
 // });
-=======
-$("document").ready(function () {
-    $(".stream").click(function () {
-        $(this).hide();
-        // $(this).css('display', 'none');
-        // $(this).remove();
-    });
-    
-         //getAllTweets();
-     //getUserName();
-    
-    /**
-     * Returns a list/array of all of the tweet object in the current page
-     */
-    function getAllTweets() {
-          var allTweets = $('[id^="stream-item-tweet-"]');
-          //console.log("All tweets = " + allTweets.length) ;
-    }
-    
-    /**
-     * Returns a username of the current user that is logged in to Tweeter
-     */
-    function getUserName() {
-          var username = $('.DashUserDropdown-userInfoLink.js-nav').attr("href");
-
-          return username.substring(1, username.length);
-    }  
-});
->>>>>>> bd2fde7428bbcb17112d815ea1d288b355699e3c
 
 // var r= $('<input type="button" value="new button"/>');
 
